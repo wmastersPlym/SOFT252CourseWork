@@ -20,7 +20,7 @@ public abstract class Person {
 
     public boolean login(String inputPassword) {
         if(passwordHash == Hash.hashPassword(inputPassword)) {
-            
+            return true;
         }
         return false;
     }

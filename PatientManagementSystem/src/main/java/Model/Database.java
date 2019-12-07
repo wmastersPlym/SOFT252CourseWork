@@ -3,21 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package Model;
 
-
-import Model.People.*;
-import Model.Util.Hash;
 /**
  *
  * @author wmasters
  */
-public class Main {
-    
-    public static void main(String[] args) {
-        
-        
-        
-        
-    }  
+public class Database {
+    // Will be used to read / write to json files
 }

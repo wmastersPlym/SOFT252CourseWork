@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Hash {
     
-    private static String salt = "NaCl";
+    private static String salt = "Soft252";
     
     public static String hashPassword(String passwordToHash) {
         passwordToHash += salt;
