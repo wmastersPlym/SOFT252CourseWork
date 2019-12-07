@@ -14,25 +14,44 @@ public class Medicine {
     private String name;
     private String description;
     
+    /**
+     *
+     * @param name
+     * @param description
+     */
     public Medicine(String name, String description) { 
         this.name = name;
         this.description = description;
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
     
-    
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
     
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
