@@ -5,6 +5,8 @@
  */
 package Main;
 
+
+import Model.Util.Hash;
 /**
  *
  * @author wmasters
@@ -12,6 +14,13 @@ package Main;
 public class Main {
     
     public static void main(String[] args) {
+        
+        String password = "password1234";
+        
+        System.out.println(password + " -> " + Hash.hashPassword(password));
+        System.out.println(password + " -> " + Hash.hashPassword(password));
+        System.out.println("test" + " -> " + Hash.hashPassword("test"));
+        System.out.println("test" + " -> " + Hash.hashPassword("test"));
         
     }
     
