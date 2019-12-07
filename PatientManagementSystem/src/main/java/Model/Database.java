@@ -11,4 +11,8 @@ package Model;
  */
 public class Database {
     // Will be used to read / write to json files
+    
+    public static void GetAllUsers() {
+        
+    }
 }
