@@ -8,6 +8,7 @@ package Main;
 
 import Model.People.*;
 import Model.Util.Hash;
+import Model.Database;
 /**
  *
  * @author wmasters
@@ -16,7 +17,7 @@ public class Main {
     
     public static void main(String[] args) {
         
-        
+        Database.test();
         
         
     }  
