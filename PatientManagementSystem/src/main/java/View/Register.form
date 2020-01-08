@@ -26,49 +26,52 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblLastName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtLastname" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtFirstname" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblRegister" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblHouseNo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblStreetName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblTown" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblPostCode" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtPostCode" min="-2" pref="135" max="-2" attributes="0"/>
-                                          <Component id="txtTown" min="-2" pref="135" max="-2" attributes="0"/>
-                                          <Component id="txtStreetName" min="-2" pref="135" max="-2" attributes="0"/>
-                                          <Component id="txtHouseNo" min="-2" pref="135" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnSubmit" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel1" pref="295" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblLastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtLastname" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtFirstname" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblRegister" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblHouseNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblStreetName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblTown" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblPostCode" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtTown" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Component id="txtStreetName" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Component id="txtHouseNo" min="-2" pref="135" max="-2" attributes="0"/>
+                                              <Component id="txtPostCode" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="chkAdmin" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -115,7 +118,9 @@
                   <Component id="lblPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="chkAdmin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSubmit" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
@@ -213,6 +218,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="When submitted the request will be sent to the secretaries"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chkAdmin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Admin Account"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAdminActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

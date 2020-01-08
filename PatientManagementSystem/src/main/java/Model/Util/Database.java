@@ -20,6 +20,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -116,6 +117,18 @@ public class Database {
         return null;
     }
     
+    public static void addPerson(Person newPerson) {
+        GetAllUsers();
+        //allTempPeople
+        Person[] all = new Person[allUsers.length+1];
+        for(int i=0; i < allUsers.length; i++) {
+            all[i] = allUsers[i];
+        }
+        all[allUsers.length] = newPerson;
+        allUsers = all;
+        writePeopleToFile();
+    }
+    
     private static void writePeopleToFile() {
         GetAllUsers();
         try {
@@ -148,6 +161,8 @@ public class Database {
         }
         
     }
+    
+    
     
     public static TempPerson[] getAllTempPeople() {
         if(allTempPeople == null) {
@@ -234,5 +249,34 @@ public class Database {
             e.printStackTrace();
         }
         
+    }
+    
+    public static boolean doesIdAlreadyExist(String id) {
+        Person[] people = GetAllUsers();
+        
+        for(Person p : people) {
+            if(p.getId().equals(id)) {
+                return true;
+            }
+        }
+        
+        return false;
+        
+    }
+    
+    public static String generateAdminId() {
+        String newId = "";
+        Random rand = new Random();
+        boolean newIdOkay = false;
+        while(!newIdOkay) {
+            newId = "a";
+            for(int i=0; i<4; i++) {
+                newId += Integer.toString(rand.nextInt(10));
+            }
+            newIdOkay = !doesIdAlreadyExist(newId);
+            
+        }
+        
+        return newId;
     }
 }

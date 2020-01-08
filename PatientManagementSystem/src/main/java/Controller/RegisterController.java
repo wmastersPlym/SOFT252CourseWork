@@ -6,7 +6,9 @@
 package Controller;
 
 import Model.Address;
+import Model.People.Admin;
 import Model.People.TempPerson;
+import Model.Util.Database;
 import Model.Util.Hash;
 import Model.Util.PatientAccountRequests;
 import View.Register;
@@ -33,9 +35,18 @@ public class RegisterController implements ActionListener{
         String password = view.getPassword();
         Address address = view.getAddress();
         
-        // Creates and sends the request to the patient account request class
-        TempPerson request = new TempPerson(firstName, lastName, Hash.hashPassword(password), address);
-        PatientAccountRequests.getInstance().addNewRequest(request);
+        if(view.getAdminAccount()) {
+            String newAdminId = Database.generateAdminId();
+            Admin newAdmin = new Admin(newAdminId, Hash.hashPassword(password), firstName, lastName, address);
+            Database.addPerson(newAdmin);
+            view.displayNewId(newAdminId);
+        } else {
+            // Creates and sends the request to the patient account request class
+            TempPerson request = new TempPerson(firstName, lastName, Hash.hashPassword(password), address);
+            PatientAccountRequests.getInstance().addNewRequest(request);
+        }
+        
+        
         
         view.dispose();
     }
