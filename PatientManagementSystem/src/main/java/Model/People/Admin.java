@@ -5,11 +5,19 @@
  */
 package Model.People;
 
+import Model.Address;
+
 /**
  *
  * @author wmasters
  */
 public class Admin extends Person {
+
+    
+    public Admin(String id, String passwordHash, String firstName, String lastName, Address address) {
+        super(id, passwordHash, firstName, lastName, address);
+    }
+    
     
     
     

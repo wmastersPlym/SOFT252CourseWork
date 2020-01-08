@@ -8,7 +8,9 @@ package Main;
 
 import Model.People.*;
 import Model.Util.Hash;
-import Model.Database;
+import Controller.Database;
+import Controller.LoginController;
+import View.Login;
 /**
  *
  * @author wmasters
@@ -17,7 +19,18 @@ public class Main {
     
     public static void main(String[] args) {
         
-        Database.test();
+        Login view = new Login();
+        
+        LoginController controller = new LoginController();
+        controller.setView(view);
+        
+        view.addButtonHandlerStrategy(controller);
+        view.setVisible(true);
+        
+
+        //System.out.print(Hash.hashPassword("william"));
+        //Database.GetAllUsers();
+        
         
         
     }  
