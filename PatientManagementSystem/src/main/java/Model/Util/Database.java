@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Model.Util;
 
 import Model.Address;
 import Model.People.Admin;
@@ -114,66 +114,5 @@ public class Database {
         return null;
     }
     
-    /*private static Person[] GetAllUsersFromJSON() {
-        ArrayList<Person> myPeople = new ArrayList<Person>();
-        
-        JSONParser jp = new JSONParser();
-        
-        try(FileReader reader = new FileReader("people.json")) {
-            Object obj = jp.parse(reader);
-            
-            JSONArray people = (JSONArray) obj;
-            
-            
-        } catch (FileNotFoundException e){
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } 
-        
-        return null;
-    }
     
-    public static void test() {
-        JSONParser jp = new JSONParser();
-        
-        try(FileReader reader = new FileReader("people.json")) {
-            Object obj = jp.parse(reader);
-            
-            JSONArray people = (JSONArray) obj;
-            System.out.println(people);
-            
-            for(Object o : people) {
-                System.out.println((JSONObject)o);
-            }
-            
-            
-        } catch (FileNotFoundException e){
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } 
-    }*/
 }
-
-
-// My JSON Simple Cheat sheet
-/*
-    JSONObject myObject = new JSONObject(); - creates a json object
-    myObject.put("attribute", "value"); - adds a attribute to a object
-
-    JSONArray myArray = new JSONArray(); - creates a array of json objects
-    myArray.add(myObject); - adds a json object to the array;
-
-    Code to write list to file
-    try(FileWriter file = new FileWriter("myFile.json")) {
-            file.write(myList.toJSONString());
-            file.flush();
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-*/

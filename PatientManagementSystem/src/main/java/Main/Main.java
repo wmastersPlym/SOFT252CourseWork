@@ -8,7 +8,7 @@ package Main;
 
 import Model.People.*;
 import Model.Util.Hash;
-import Controller.Database;
+import Model.Util.Database;
 import Controller.LoginController;
 import View.Login;
 /**

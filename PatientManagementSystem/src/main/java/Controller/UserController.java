@@ -5,10 +5,30 @@
  */
 package Controller;
 
+import Model.People.Person;
+import Model.Util.Hash;
+import View.UserPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author wmasters
  */
-public class UserController {
+public class UserController implements ActionListener{
+    UserPanel view = null;
+    Person user = null;
     
+    public void setView(UserPanel view) {
+        this.view = view;
+    }
+    
+    public void setPerson(Person user) {
+        this.user = user;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
 }

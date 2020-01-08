@@ -5,9 +5,11 @@
  */
 package Controller;
 
+import Model.Util.Database;
 import Model.People.Person;
 import Model.Util.Hash;
 import View.Login;
+import View.Register;
 import View.UserPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,11 +43,38 @@ public class LoginController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(attemptLogin(view.getLogInCredentialsUsername(), view.getLogInCredentialsPassword())) {
-            UserPanel view = new UserPanel();
-        } else {
-            System.out.println("Login no \n" + view.getLogInCredentialsUsername() + "," + Hash.hashPassword(view.getLogInCredentialsPassword()));
+        //System.out.println(e.getActionCommand());
+        if(e.getActionCommand().equals("Submit")) {
+            System.out.println("login");
+            if(attemptLogin(view.getLogInCredentialsUsername(), view.getLogInCredentialsPassword())) {
+                Person person = Database.getPerson(view.getLogInCredentialsUsername());
+                UserPanel view = new UserPanel();
+                UserController controller = new UserController();
+            
+                controller.setView(view);
+                controller.setPerson(person);
+            
+                view.setVisible(true);
+            
+                this.view.setVisible(false);
+            
+            } else {
+                //System.out.println("Login no \n" + view.getLogInCredentialsUsername() + "," + Hash.hashPassword(view.getLogInCredentialsPassword()));
+                view.setErrorMessage("Invalid Credentials");
+            }
+        } else if(e.getActionCommand().equals("Register")) {
+            System.out.println("Register");
+            
+            Register view = new Register();
+            RegisterController controller = new RegisterController();
+            
+            controller.setView(view);
+            view.addButtonHandlerStrategy(controller);
+            
+            view.setVisible(true);
+            
         }
+        
     }
     
 }

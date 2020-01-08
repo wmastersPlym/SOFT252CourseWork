@@ -35,6 +35,8 @@ public class Login extends javax.swing.JFrame {
         txtPassword = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
         lblLogin = new javax.swing.JLabel();
+        lblErrorMsg = new javax.swing.JLabel();
+        btnRegister = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +54,15 @@ public class Login extends javax.swing.JFrame {
         lblLogin.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         lblLogin.setText("Login");
 
+        lblErrorMsg.setText(" ");
+
+        btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -59,8 +70,12 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRegister)
                     .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSubmit)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSubmit)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblErrorMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblUsername)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -69,7 +84,7 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(lblPassword)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,8 +100,12 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(lblPassword)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnSubmit)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSubmit)
+                    .addComponent(lblErrorMsg))
+                .addGap(18, 18, 18)
+                .addComponent(btnRegister)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
@@ -95,6 +114,10 @@ public class Login extends javax.swing.JFrame {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,12 +162,22 @@ public class Login extends javax.swing.JFrame {
         return txtPassword.getText();
     }
     
+    
     public void addButtonHandlerStrategy(ActionListener strategy){
         btnSubmit.addActionListener(strategy);
+        btnRegister.addActionListener(strategy);
     } 
+    
+    public void setErrorMessage(String msg) {
+        lblErrorMsg.setText(msg);
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnSubmit;
+    private javax.swing.JLabel lblErrorMsg;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUsername;
