@@ -15,13 +15,14 @@ import java.awt.event.ActionEvent;
 public class AdminController extends UserController {
 
     @Override
-    public void init() {
+    public void init() { // initialises the user page for the admin
         view.setUserDetails(user.getId(), user.getFirstName(),user.getLastName(),user.getAddress());
         view.buildAdminControls();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Opens the add doctor / secretary page
         if(e.getActionCommand().equals("Add Doctor/Secretary")) {
             
             CreateAccount createAccount = new CreateAccount();

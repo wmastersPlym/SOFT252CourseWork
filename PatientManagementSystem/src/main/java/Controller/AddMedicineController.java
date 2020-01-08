@@ -21,10 +21,11 @@ public class AddMedicineController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("Add")) {
+        
+        if(e.getActionCommand().equals("Add")) { // If the add button was pressed it will add a new medicine to the database and then closes the window
             Database.addMedicine(new Medicine(view.getMedicineName(), view.getDesc(), 0));
             view.dispose();
-        } else if(e.getActionCommand().equals("Cancel")) {
+        } else if(e.getActionCommand().equals("Cancel")) { // closes the window
             view.dispose();
         }
     }
