@@ -6,7 +6,10 @@
 package View;
 
 import Model.Address;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +22,7 @@ public class UserPanel extends javax.swing.JFrame {
      */
     public UserPanel() {
         initComponents();
+        pnlControls.setLayout(new GridLayout(8, 1));
     }
 
     /**
@@ -45,6 +49,8 @@ public class UserPanel extends javax.swing.JFrame {
         lblStreetNameResult = new javax.swing.JLabel();
         lblTownResult = new javax.swing.JLabel();
         lblPostCodeResult = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
+        lblIdResult = new javax.swing.JLabel();
         pnlControls = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,6 +97,12 @@ public class UserPanel extends javax.swing.JFrame {
         lblPostCodeResult.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPostCodeResult.setText("Empty");
 
+        lblId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblId.setText("Id");
+
+        lblIdResult.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblIdResult.setText("Empty");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -99,14 +111,6 @@ public class UserPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblUserDetails)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFirstName)
-                            .addComponent(lblLastName))
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFirstNameResult)
-                            .addComponent(lblLastNameResult)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblHouseNo)
@@ -118,7 +122,20 @@ public class UserPanel extends javax.swing.JFrame {
                             .addComponent(lblPostCodeResult)
                             .addComponent(lblTownResult)
                             .addComponent(lblStreetNameResult)
-                            .addComponent(lblHouseNoResult))))
+                            .addComponent(lblHouseNoResult)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(lblId)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblIdResult))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblFirstName)
+                                .addComponent(lblLastName))
+                            .addGap(43, 43, 43)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblFirstNameResult)
+                                .addComponent(lblLastNameResult)))))
                 .addContainerGap(390, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -134,6 +151,10 @@ public class UserPanel extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLastName)
                     .addComponent(lblLastNameResult))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblId)
+                    .addComponent(lblIdResult))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHouseNo)
@@ -231,7 +252,8 @@ public class UserPanel extends javax.swing.JFrame {
         });
     }
     
-    public void setUserDetails(String firstname, String lastName, Address address) {
+    public void setUserDetails(String id, String firstname, String lastName, Address address) {
+        lblIdResult.setText(id);
         lblFirstNameResult.setText(firstname);
         lblLastNameResult.setText(lastName);
         lblHouseNoResult.setText(address.getHouseNumberName());
@@ -241,8 +263,36 @@ public class UserPanel extends javax.swing.JFrame {
         
     }
     
+    public void buildAdminControls() {
+        javax.swing.JButton addDoctorSecretary = new javax.swing.JButton("Add Doctor/Secretary");
+        pnlControls.add(addDoctorSecretary);
+    }
+    
+    public void buildSecretaryControls() {
+        javax.swing.JButton approvePatientAccounts = new javax.swing.JButton("Approve Patient Accounts");
+        pnlControls.add(approvePatientAccounts);
+        
+    }
+    
+    public void buildDoctorControls() {
+        javax.swing.JButton viewAppointments = new javax.swing.JButton("View Appointments");
+        pnlControls.add(viewAppointments);
+        
+    }
+    public void buildPatientControls() {
+        javax.swing.JButton rateDoctor = new javax.swing.JButton("Rate doctor");
+        pnlControls.add(rateDoctor);
+        
+    }
+    
     public void addButtonHandlerStrategy(ActionListener strategy){
-        //
+        for(int i=0; i < pnlControls.getComponentCount(); i++) {
+            ((JButton)pnlControls.getComponent(i)).addActionListener(strategy);
+        }
+    }
+    
+    public void displayMessage(String msg, String msgTitle) {
+        JOptionPane.showMessageDialog(null, msg, msgTitle, JOptionPane.INFORMATION_MESSAGE);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -252,6 +302,8 @@ public class UserPanel extends javax.swing.JFrame {
     private javax.swing.JLabel lblFirstNameResult;
     private javax.swing.JLabel lblHouseNo;
     private javax.swing.JLabel lblHouseNoResult;
+    private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblIdResult;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblLastNameResult;
     private javax.swing.JLabel lblPostCode;

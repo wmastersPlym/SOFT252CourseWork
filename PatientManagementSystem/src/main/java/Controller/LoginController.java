@@ -49,12 +49,31 @@ public class LoginController implements ActionListener{
             if(attemptLogin(view.getLogInCredentialsUsername(), view.getLogInCredentialsPassword())) {
                 Person person = Database.getPerson(view.getLogInCredentialsUsername());
                 UserPanel view = new UserPanel();
-                UserController controller = new UserController();
+                
+                UserController controller = null;
+                
+                switch(person.getId().charAt(0)) {
+                    case 'a':
+                        controller = new AdminController();
+                        break;
+                    case 's':
+                        controller = new SecretaryController();
+                        break;
+                    case 'd':
+                        controller = new DoctorController();
+                        break;
+                    case 'p':
+                        controller = new PatientController();
+                        break;
+                        
+                }
+                
             
                 controller.setView(view);
                 controller.setPerson(person);
                 controller.init();
             
+                view.addButtonHandlerStrategy(controller);
                 view.setVisible(true);
             
                 this.view.setVisible(false);

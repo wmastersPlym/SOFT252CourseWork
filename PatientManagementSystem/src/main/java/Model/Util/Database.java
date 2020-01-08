@@ -119,6 +119,7 @@ public class Database {
     
     public static void addPerson(Person newPerson) {
         GetAllUsers();
+        System.out.println("Model.Util.Database.addPerson():" + newPerson.getId());
         //allTempPeople
         Person[] all = new Person[allUsers.length+1];
         for(int i=0; i < allUsers.length; i++) {
@@ -270,6 +271,54 @@ public class Database {
         boolean newIdOkay = false;
         while(!newIdOkay) {
             newId = "a";
+            for(int i=0; i<4; i++) {
+                newId += Integer.toString(rand.nextInt(10));
+            }
+            newIdOkay = !doesIdAlreadyExist(newId);
+            
+        }
+        
+        return newId;
+    }
+    
+    public static String generateDoctorId() {
+        String newId = "";
+        Random rand = new Random();
+        boolean newIdOkay = false;
+        while(!newIdOkay) {
+            newId = "d";
+            for(int i=0; i<4; i++) {
+                newId += Integer.toString(rand.nextInt(10));
+            }
+            newIdOkay = !doesIdAlreadyExist(newId);
+            
+        }
+        
+        return newId;
+    }
+    
+    public static String generateSecretaryId() {
+        String newId = "";
+        Random rand = new Random();
+        boolean newIdOkay = false;
+        while(!newIdOkay) {
+            newId = "s";
+            for(int i=0; i<4; i++) {
+                newId += Integer.toString(rand.nextInt(10));
+            }
+            newIdOkay = !doesIdAlreadyExist(newId);
+            
+        }
+        
+        return newId;
+    }
+    
+    public static String generatePatientId() {
+        String newId = "";
+        Random rand = new Random();
+        boolean newIdOkay = false;
+        while(!newIdOkay) {
+            newId = "p";
             for(int i=0; i<4; i++) {
                 newId += Integer.toString(rand.nextInt(10));
             }

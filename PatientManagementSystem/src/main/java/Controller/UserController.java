@@ -15,13 +15,13 @@ import java.awt.event.ActionListener;
  *
  * @author wmasters
  */
-public class UserController implements ActionListener{
+public abstract class UserController implements ActionListener{
+    
     UserPanel view = null;
     Person user = null;
     
-    public void init() {
-        view.setUserDetails(user.getFirstName(),user.getLastName(),user.getAddress());
-    }
+    public abstract void init() ;
+        //view.setUserDetails(user.getId(), user.getFirstName(),user.getLastName(),user.getAddress());
     
     public void setView(UserPanel view) {
         this.view = view;
@@ -31,8 +31,4 @@ public class UserController implements ActionListener{
         this.user = user;
     }
     
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //
-    }
 }

@@ -15,16 +15,32 @@ import Model.People.TempPerson;
 public class PatientAccountRequests {
     
     private static PatientAccountRequests instance = null;
+    private static TempPerson[] accountsToView;
     
     public static PatientAccountRequests getInstance() {
         if(instance == null) {
             instance = new PatientAccountRequests();
         }
+        update();
         return instance;
+    }
+    
+    public static void update() {
+        accountsToView = Database.getAllTempPeople();
+    }
+    
+    public TempPerson getAccountToReview() {
+        if(accountsToView.length >0) {
+            return accountsToView[0];
+        } else {
+            return null;
+        }
+        
     }
     
     public static void addNewRequest(TempPerson person) {
         Database.addTempPerson(person);
+        update();
     }
     
 }
