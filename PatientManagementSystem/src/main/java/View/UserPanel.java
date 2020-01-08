@@ -5,6 +5,9 @@
  */
 package View;
 
+import Model.Address;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author wmasters
@@ -27,11 +30,127 @@ public class UserPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblUserPanel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblUserDetails = new javax.swing.JLabel();
+        lblFirstName = new javax.swing.JLabel();
+        lblFirstNameResult = new javax.swing.JLabel();
+        lblLastName = new javax.swing.JLabel();
+        lblLastNameResult = new javax.swing.JLabel();
+        lblHouseNo = new javax.swing.JLabel();
+        lblStreetName = new javax.swing.JLabel();
+        lblTown = new javax.swing.JLabel();
+        lblPostCode = new javax.swing.JLabel();
+        lblHouseNoResult = new javax.swing.JLabel();
+        lblStreetNameResult = new javax.swing.JLabel();
+        lblTownResult = new javax.swing.JLabel();
+        lblPostCodeResult = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblUserPanel.setText("User Panel");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setText("User Panel");
+
+        lblUserDetails.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblUserDetails.setText("User details");
+
+        lblFirstName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblFirstName.setText("First name");
+
+        lblFirstNameResult.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblFirstNameResult.setText("Empty");
+
+        lblLastName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblLastName.setText("Last name");
+
+        lblLastNameResult.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblLastNameResult.setText("Empty");
+
+        lblHouseNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblHouseNo.setText("House number");
+
+        lblStreetName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblStreetName.setText("Street name");
+
+        lblTown.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTown.setText("Town");
+
+        lblPostCode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPostCode.setText("Post code");
+
+        lblHouseNoResult.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblHouseNoResult.setText("Empty");
+
+        lblStreetNameResult.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblStreetNameResult.setText("Empty");
+
+        lblTownResult.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblTownResult.setText("Empty");
+
+        lblPostCodeResult.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPostCodeResult.setText("Empty");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUserDetails)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFirstName)
+                            .addComponent(lblLastName))
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFirstNameResult)
+                            .addComponent(lblLastNameResult)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblHouseNo)
+                            .addComponent(lblStreetName)
+                            .addComponent(lblTown)
+                            .addComponent(lblPostCode))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPostCodeResult)
+                            .addComponent(lblTownResult)
+                            .addComponent(lblStreetNameResult)
+                            .addComponent(lblHouseNoResult))))
+                .addContainerGap(390, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblUserDetails)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFirstName)
+                    .addComponent(lblFirstNameResult))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLastName)
+                    .addComponent(lblLastNameResult))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHouseNo)
+                    .addComponent(lblHouseNoResult))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStreetName)
+                    .addComponent(lblStreetNameResult))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTown)
+                    .addComponent(lblTownResult))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPostCode)
+                    .addComponent(lblPostCodeResult))
+                .addContainerGap(188, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -39,15 +158,21 @@ public class UserPanel extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblUserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblUserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -87,8 +212,36 @@ public class UserPanel extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void setUserDetails(String firstname, String lastName, Address address) {
+        lblFirstNameResult.setText(firstname);
+        lblLastNameResult.setText(lastName);
+        lblHouseNoResult.setText(address.getHouseNumberName());
+        lblStreetNameResult.setText(address.getStreetName());
+        lblTownResult.setText(address.getTown());
+        lblPostCodeResult.setText(address.getPostcode());
+        
+    }
+    
+    public void addButtonHandlerStrategy(ActionListener strategy){
+        //
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblUserPanel;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblFirstName;
+    private javax.swing.JLabel lblFirstNameResult;
+    private javax.swing.JLabel lblHouseNo;
+    private javax.swing.JLabel lblHouseNoResult;
+    private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblLastNameResult;
+    private javax.swing.JLabel lblPostCode;
+    private javax.swing.JLabel lblPostCodeResult;
+    private javax.swing.JLabel lblStreetName;
+    private javax.swing.JLabel lblStreetNameResult;
+    private javax.swing.JLabel lblTown;
+    private javax.swing.JLabel lblTownResult;
+    private javax.swing.JLabel lblUserDetails;
     // End of variables declaration//GEN-END:variables
 }

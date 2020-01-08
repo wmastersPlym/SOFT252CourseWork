@@ -11,7 +11,9 @@ import Model.People.Doctor;
 import Model.People.Patient;
 import Model.People.Person;
 import Model.People.Secretary;
+import Model.People.TempPerson;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;
@@ -31,7 +33,7 @@ public class Database {
     // Will be used to read / write to json files
     
     private static Person[] allUsers;
-    
+    private static TempPerson[] allTempPeople;
     
     public static Person[] GetAllUsers() {
         if(allUsers == null) {
@@ -114,5 +116,123 @@ public class Database {
         return null;
     }
     
+    private static void writePeopleToFile() {
+        GetAllUsers();
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("people.txt"), false));
+            bw.write(Integer.toString(allUsers.length));
+            bw.newLine();
+            for(Person p : allUsers) {
+                bw.write(p.getId());
+                bw.newLine();
+                bw.write(p.getPasswordHash());
+                bw.newLine();
+                bw.write(p.getFirstName());
+                bw.newLine();
+                bw.write(p.getLastName());
+                bw.newLine();
+                bw.write(p.getAddress().getHouseNumberName());
+                bw.newLine();
+                bw.write(p.getAddress().getStreetName());
+                bw.newLine();
+                bw.write(p.getAddress().getTown());
+                bw.newLine();
+                bw.write(p.getAddress().getPostcode());
+                bw.newLine();
+                
+            }
+            bw.close();
+            
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
     
+    public static TempPerson[] getAllTempPeople() {
+        if(allTempPeople == null) {
+            allTempPeople = getAllTempPeopleFromFile();
+        }
+        return allTempPeople;
+    }
+    
+    private static TempPerson[] getAllTempPeopleFromFile() {
+        ArrayList<TempPerson> myTempPeople = new ArrayList<TempPerson>();
+        
+        try {
+          BufferedReader br = new BufferedReader(new FileReader(new File("tempPeople.txt")));  
+          int numberOfPeople = Integer.parseInt(br.readLine());
+          for(int i =0; i < numberOfPeople; i++) {
+              String passwordHash = br.readLine();
+              String firstName = br.readLine();
+              String lastName = br.readLine();
+              String houseNumberName = br.readLine();
+              String streetName = br.readLine();
+              String town = br.readLine();
+              String postcode = br.readLine();
+              
+              myTempPeople.add(new TempPerson(firstName, lastName, passwordHash, new Address(houseNumberName, streetName, town, postcode)));
+              
+              
+              
+              //System.out.println(id.charAt(0));
+          }
+          TempPerson[] peopleToReturn = myTempPeople.toArray(new TempPerson[myTempPeople.size()]);
+          //peopleToReturn = (Person) myPeople.toArray();
+          br.close();
+          return peopleToReturn;
+          
+        }catch (IOException e) {
+            e.printStackTrace();
+        } catch(NumberFormatException e) {
+            e.printStackTrace();
+        }
+        
+                
+        
+        return null;
+    }
+    
+    public static void addTempPerson(TempPerson newTempPerson) {
+        getAllTempPeople();
+        //allTempPeople
+        TempPerson[] all = new TempPerson[allTempPeople.length+1];
+        for(int i=0; i < allTempPeople.length; i++) {
+            all[i] = allTempPeople[i];
+        }
+        all[allTempPeople.length] = newTempPerson;
+        allTempPeople = all;
+        writeTempPeopleToFile();
+    }
+    
+    private static void writeTempPeopleToFile() {
+        getAllTempPeople();
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("tempPeople.txt"), false));
+            bw.write(Integer.toString(allTempPeople.length));
+            bw.newLine();
+            for(TempPerson p : allTempPeople) {
+                bw.write(p.getPasswordHash());
+                bw.newLine();
+                bw.write(p.getFirstName());
+                bw.newLine();
+                bw.write(p.getLastName());
+                bw.newLine();
+                bw.write(p.getAddress().getHouseNumberName());
+                bw.newLine();
+                bw.write(p.getAddress().getStreetName());
+                bw.newLine();
+                bw.write(p.getAddress().getTown());
+                bw.newLine();
+                bw.write(p.getAddress().getPostcode());
+                bw.newLine();
+                
+            }
+            bw.close();
+            
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
 }

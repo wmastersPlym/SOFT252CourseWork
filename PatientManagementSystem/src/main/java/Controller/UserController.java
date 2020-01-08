@@ -19,6 +19,10 @@ public class UserController implements ActionListener{
     UserPanel view = null;
     Person user = null;
     
+    public void init() {
+        view.setUserDetails(user.getFirstName(),user.getLastName(),user.getAddress());
+    }
+    
     public void setView(UserPanel view) {
         this.view = view;
     }
@@ -29,6 +33,6 @@ public class UserController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        //
     }
 }

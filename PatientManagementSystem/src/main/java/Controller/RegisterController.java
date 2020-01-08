@@ -7,6 +7,7 @@ package Controller;
 
 import Model.Address;
 import Model.People.TempPerson;
+import Model.Util.Hash;
 import Model.Util.PatientAccountRequests;
 import View.Register;
 import java.awt.event.ActionEvent;
@@ -33,7 +34,7 @@ public class RegisterController implements ActionListener{
         Address address = view.getAddress();
         
         // Creates and sends the request to the patient account request class
-        TempPerson request = new TempPerson(firstName, lastName, password, address);
+        TempPerson request = new TempPerson(firstName, lastName, Hash.hashPassword(password), address);
         PatientAccountRequests.getInstance().addNewRequest(request);
         
         view.dispose();

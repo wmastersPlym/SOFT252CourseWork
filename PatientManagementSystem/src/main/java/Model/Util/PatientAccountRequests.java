@@ -24,7 +24,7 @@ public class PatientAccountRequests {
     }
     
     public static void addNewRequest(TempPerson person) {
-        
+        Database.addTempPerson(person);
     }
     
 }

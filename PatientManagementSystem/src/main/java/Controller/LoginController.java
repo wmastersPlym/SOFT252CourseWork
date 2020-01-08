@@ -53,6 +53,7 @@ public class LoginController implements ActionListener{
             
                 controller.setView(view);
                 controller.setPerson(person);
+                controller.init();
             
                 view.setVisible(true);
             
