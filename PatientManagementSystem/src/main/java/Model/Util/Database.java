@@ -7,6 +7,7 @@ package Model.Util;
 
 import Model.Address;
 import Model.Appointment;
+import Model.Medicine;
 import Model.People.Admin;
 import Model.People.Doctor;
 import Model.People.Patient;
@@ -37,6 +38,7 @@ public class Database {
     private static Person[] allUsers;
     private static TempPerson[] allTempPeople;
     private static Appointment[] allAppointments;
+    private static Medicine[] allMedicine;
     
     public static Person[] GetAllUsers() {
         if(allUsers == null) {
@@ -430,6 +432,99 @@ public class Database {
                 bw.write(a.getDateTime());
                 bw.newLine();
                 bw.write(a.getNotes());
+                bw.newLine();
+                
+                
+            }
+            bw.close();
+            
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    
+    
+    public static Medicine[] GetAllMedicine() {
+        if(allMedicine == null) {
+            allMedicine = getAllMedicineFromFile();
+        }
+        return allMedicine;
+    }
+    
+    private static Medicine[] getAllMedicineFromFile() {
+        ArrayList<Medicine> myMedicines = new ArrayList<Medicine>();
+        
+        try {
+          BufferedReader br = new BufferedReader(new FileReader(new File("medicines.txt")));  
+          int numberOfMedicines = Integer.parseInt(br.readLine());
+          for(int i =0; i < numberOfMedicines; i++) {
+              String name = br.readLine();
+              String desc = br.readLine();
+              int qty = Integer.parseInt(br.readLine());
+              
+              Medicine newMedicine = new Medicine(name, desc, qty);
+              myMedicines.add(newMedicine);
+              
+              //System.out.println(id.charAt(0));
+          }
+          Medicine[] medicinesToReturn = myMedicines.toArray(new Medicine[myMedicines.size()]);
+          br.close();
+          return medicinesToReturn;
+          
+        }catch (IOException e) {
+            e.printStackTrace();
+        } catch(NumberFormatException e) {
+            e.printStackTrace();
+        }
+        
+                
+        
+        return null;
+    }
+    
+    public static Medicine getMedicine(String name) {
+        Medicine[] medicines = GetAllMedicine();
+        
+        for(Medicine m : medicines) {
+           // System.out.println("p.getId() : " + p.getId());
+            
+            if(name.equals(m.getName())) {
+                //System.out.println("Appointment Found");
+                return m;
+            }
+        }
+        return null;
+        
+        
+    }
+    
+    public static void addMedicine(Medicine newMedicine) {
+        GetAllMedicine();
+        
+        Medicine[] all = new Medicine[allMedicine.length+1];
+        for(int i=0; i < allMedicine.length; i++) {
+            
+            all[i] = allMedicine[i];
+        }
+        all[allMedicine.length] = newMedicine;
+        allMedicine = all;
+        writeAppointmentsToFile();
+    }
+    
+    private static void writeMedicinesToFile() {
+        GetAllMedicine();
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("medicine.txt"), false));
+            bw.write(Integer.toString(allMedicine.length));
+            bw.newLine();
+            for(Medicine m : allMedicine) {
+                bw.write(m.getName());
+                bw.newLine();
+                bw.write(m.getDescription());
+                bw.newLine();
+                bw.write(m.getQuantity());
                 bw.newLine();
                 
                 

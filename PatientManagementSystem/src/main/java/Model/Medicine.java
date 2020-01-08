@@ -13,48 +13,40 @@ public class Medicine {
     
     private String name;
     private String description;
-    
-    /**
-     *
-     * @param name
-     * @param description
-     */
-    public Medicine(String name, String description) { 
+    private int quantity;
+
+    public Medicine(String name, String description, int quantity) {
         this.name = name;
         this.description = description;
+        this.quantity = quantity;
     }
-    
-    /**
-     *
-     * @return
-     */
+
     public String getName() {
         return name;
     }
-    
-    /**
-     *
-     * @return
-     */
-    public String getDescription() {
-        return description;
-    }
-    
-    /**
-     *
-     * @param name
-     */
+
     public void setName(String name) {
         this.name = name;
     }
-    
-    /**
-     *
-     * @param description
-     */
+
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
+    
+    
     
     
 }

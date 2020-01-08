@@ -13,6 +13,7 @@ import Model.Address;
  */
 public class Patient extends Person{
 
+    
     public Patient(String id, String passwordHash, String firstName, String lastName, Address address) {
         super(id, passwordHash, firstName, lastName, address);
     }

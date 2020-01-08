@@ -38,6 +38,10 @@ public class DoctorController extends UserController {
             
             view.addButtonHandlerStrategy(controller);
             view.setVisible(true);
+        } else if(e.getActionCommand().equals("Add new Medicine")) {
+            
+        } else if(e.getActionCommand().equals("Make Appointments")){
+            
         }
     }
     

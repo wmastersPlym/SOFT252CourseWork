@@ -215,6 +215,7 @@ public class AppointmentViewer extends javax.swing.JFrame {
         }
         btnClose.addActionListener(strategy);
     } 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
