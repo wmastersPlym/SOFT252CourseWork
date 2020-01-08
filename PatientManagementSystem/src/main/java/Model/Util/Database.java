@@ -75,7 +75,9 @@ public class Database {
                       myPeople.add(newDoctor);
                       break;
                   case 'p':
-                      Patient newPatient = new Patient(id, passwordHash, firstName, lastName, new Address(houseNumberName, streetName, town, postcode));
+                      String sex = br.readLine();
+                      int age = Integer.parseInt(br.readLine());
+                      Patient newPatient = new Patient(id, passwordHash, firstName, lastName, new Address(houseNumberName, streetName, town, postcode), sex, age);
                       myPeople.add(newPatient);
                       break;
                   case 's':
@@ -157,7 +159,10 @@ public class Database {
                 bw.newLine();
                 bw.write(p.getAddress().getPostcode());
                 bw.newLine();
-                
+                if(p instanceof Patient) {
+                    bw.write(((Patient) p).getSex());
+                    bw.write(((Patient) p).getAge());
+                }
             }
             bw.close();
             
@@ -190,8 +195,10 @@ public class Database {
               String streetName = br.readLine();
               String town = br.readLine();
               String postcode = br.readLine();
+              String sex = br.readLine();
+              int age = Integer.parseInt(br.readLine());
               
-              myTempPeople.add(new TempPerson(firstName, lastName, passwordHash, new Address(houseNumberName, streetName, town, postcode)));
+              myTempPeople.add(new TempPerson(firstName, lastName, passwordHash, new Address(houseNumberName, streetName, town, postcode), sex, age));
               
               
               
@@ -245,6 +252,10 @@ public class Database {
                 bw.write(p.getAddress().getTown());
                 bw.newLine();
                 bw.write(p.getAddress().getPostcode());
+                bw.newLine();
+                bw.write(p.getSex());
+                bw.newLine();
+                bw.write(Integer.toString(p.getAge()));
                 bw.newLine();
                 
             }

@@ -27,7 +27,7 @@ public class TempPersonReviewerController implements ActionListener{
             
             // Add new person
             String newId = Database.generatePatientId();
-            Database.addPerson(new Patient(newId, person.getPasswordHash(), person.getFirstName(), person.getLastName(), person.getAddress()));
+            Database.addPerson(new Patient(newId, person.getPasswordHash(), person.getFirstName(), person.getLastName(), person.getAddress(), person.getSex(), person.getAge()));
             Database.popTempPerson();
             view.displayMessage("Id for " + person.getFirstName() + ": " + newId, "new Id + " + newId);
             view.dispose();

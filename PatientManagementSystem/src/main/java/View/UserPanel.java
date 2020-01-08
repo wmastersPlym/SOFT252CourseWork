@@ -277,7 +277,7 @@ public class UserPanel extends javax.swing.JFrame {
     public void buildDoctorControls() {
         javax.swing.JButton viewAppointments = new javax.swing.JButton("View Appointments");
         pnlControls.add(viewAppointments);
-        javax.swing.JButton makeAppointments = new javax.swing.JButton("make Appointments");
+        javax.swing.JButton makeAppointments = new javax.swing.JButton("Make Appointments");
         pnlControls.add(makeAppointments);
         javax.swing.JButton addMedicine = new javax.swing.JButton("Add new Medicine");
         pnlControls.add(addMedicine);

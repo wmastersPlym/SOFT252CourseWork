@@ -49,6 +49,11 @@ public class Register extends javax.swing.JFrame {
         btnSubmit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         chkAdmin = new javax.swing.JCheckBox();
+        lblPostCode1 = new javax.swing.JLabel();
+        txtSex = new javax.swing.JTextField();
+        lblPostCode2 = new javax.swing.JLabel();
+        txtAge = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +99,16 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        lblPostCode1.setText("Sex");
+
+        txtSex.setText("jTextField1");
+
+        lblPostCode2.setText("Age");
+
+        txtAge.setText("jTextField1");
+
+        jLabel2.setText("Sex and age only needed for patients");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,9 +119,10 @@ public class Register extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSubmit)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkAdmin)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +150,14 @@ public class Register extends javax.swing.JFrame {
                                                 .addComponent(txtHouseNo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txtPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGap(141, 141, 141)))
-                            .addComponent(chkAdmin))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSex, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblPostCode1)
+                            .addComponent(lblPostCode2)
+                            .addComponent(jLabel2))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -171,9 +194,21 @@ public class Register extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPostCode)
                     .addComponent(txtPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblPostCode1))
+                    .addComponent(txtSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPostCode2)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(chkAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -238,6 +273,14 @@ public class Register extends javax.swing.JFrame {
         return new Address(txtHouseNo.getText(), txtStreetName.getText(), txtTown.getText(), txtPostCode.getText());
     }
     
+    public String getSex() {
+        return txtSex.getText();
+    }
+    
+    public int getAge() {
+        return Integer.parseInt(txtAge.getText());
+    }
+    
     public boolean getAdminAccount() {
         return chkAdmin.isSelected();
     }
@@ -254,19 +297,24 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JButton btnSubmit;
     private javax.swing.JCheckBox chkAdmin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblHouseNo;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPostCode;
+    private javax.swing.JLabel lblPostCode1;
+    private javax.swing.JLabel lblPostCode2;
     private javax.swing.JLabel lblRegister;
     private javax.swing.JLabel lblStreetName;
     private javax.swing.JLabel lblTown;
+    private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtFirstname;
     private javax.swing.JTextField txtHouseNo;
     private javax.swing.JTextField txtLastname;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtPostCode;
+    private javax.swing.JTextField txtSex;
     private javax.swing.JTextField txtStreetName;
     private javax.swing.JTextField txtTown;
     // End of variables declaration//GEN-END:variables

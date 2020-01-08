@@ -16,12 +16,16 @@ public class TempPerson {
     private String firstName;
     private String lastName;
     private Address address;
+    private String sex;
+    private int age;
 
-    public TempPerson(String firstName, String lastName, String passwordHash, Address address) {
+    public TempPerson(String firstName, String lastName, String passwordHash, Address address, String sex, int age) {
         this.passwordHash = passwordHash;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        this.sex = sex;
+        this.age = age;
     }
 
     public String getPasswordHash() {
@@ -55,6 +59,23 @@ public class TempPerson {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
     
     
 }

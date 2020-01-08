@@ -41,8 +41,10 @@ public class RegisterController implements ActionListener{
             Database.addPerson(newAdmin);
             view.displayNewId(newAdminId);
         } else {
+            String sex = view.getSex();
+            int age = view.getAge();
             // Creates and sends the request to the patient account request class
-            TempPerson request = new TempPerson(firstName, lastName, Hash.hashPassword(password), address);
+            TempPerson request = new TempPerson(firstName, lastName, Hash.hashPassword(password), address, sex, age);
             PatientAccountRequests.getInstance().addNewRequest(request);
         }
         

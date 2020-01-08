@@ -33,8 +33,6 @@ Jeff
 street
 big one
 PALWD
-Male
-60
 d1234
 c9728739527637e6d78e4790c3ccb7af
 Dr William
