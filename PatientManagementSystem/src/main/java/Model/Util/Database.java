@@ -6,6 +6,7 @@
 package Model.Util;
 
 import Model.Address;
+import Model.Appointment;
 import Model.People.Admin;
 import Model.People.Doctor;
 import Model.People.Patient;
@@ -35,6 +36,7 @@ public class Database {
     
     private static Person[] allUsers;
     private static TempPerson[] allTempPeople;
+    private static Appointment[] allAppointments;
     
     public static Person[] GetAllUsers() {
         if(allUsers == null) {
@@ -336,5 +338,107 @@ public class Database {
         }
         
         return newId;
+    }
+    
+    //
+    public static Appointment[] GetAllAppointments() {
+        if(allAppointments == null) {
+            allAppointments = getAllAppointmentsFromFile();
+        }
+        return allAppointments;
+    }
+    
+    private static Appointment[] getAllAppointmentsFromFile() {
+        ArrayList<Appointment> myAppointments = new ArrayList<Appointment>();
+        
+        try {
+          BufferedReader br = new BufferedReader(new FileReader(new File("appointments.txt")));  
+          int numberOfAppointments = Integer.parseInt(br.readLine());
+          for(int i =0; i < numberOfAppointments; i++) {
+              String drId = br.readLine();
+              String patientId = br.readLine();
+              String dateTime = br.readLine();
+              String note = br.readLine();
+              
+              Appointment newAppointment = new Appointment(drId, patientId, dateTime, note);
+              myAppointments.add(newAppointment);
+              
+              //System.out.println(id.charAt(0));
+          }
+          Appointment[] appointmentsToReturn = myAppointments.toArray(new Appointment[myAppointments.size()]);
+          br.close();
+          return appointmentsToReturn;
+          
+        }catch (IOException e) {
+            e.printStackTrace();
+        } catch(NumberFormatException e) {
+            e.printStackTrace();
+        }
+        
+                
+        
+        return null;
+    }
+    
+    public static Appointment[] getDrsAppointments(String drId) {
+        Appointment[] appointmetns = GetAllAppointments();
+        //System.out.println("Controller.Database.getDrsAppointments(), id: " + drId);
+        ArrayList<Appointment> matching = new ArrayList<>();
+        for(Appointment a : appointmetns) {
+           // System.out.println("p.getId() : " + p.getId());
+            
+            if(drId.equals(a.getDoctorId())) {
+                //System.out.println("Appointment Found");
+                matching.add(a);
+            }
+        }
+        //System.out.println("mathcing size: " + matching.size());
+        if(matching.size() > 0) {
+            
+            return matching.toArray(new Appointment[matching.size()]);
+        } else {
+            return null;
+        }
+        
+        
+    }
+    
+    public static void addAppointment(Appointment newAppointment) {
+        GetAllAppointments();
+        
+        Appointment[] all = new Appointment[allAppointments.length+1];
+        for(int i=0; i < allAppointments.length; i++) {
+            
+            all[i] = allAppointments[i];
+        }
+        all[allAppointments.length] = newAppointment;
+        allAppointments = all;
+        writeAppointmentsToFile();
+    }
+    
+    private static void writeAppointmentsToFile() {
+        GetAllUsers();
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("appointments.txt"), false));
+            bw.write(Integer.toString(allAppointments.length));
+            bw.newLine();
+            for(Appointment a : allAppointments) {
+                bw.write(a.getDoctorId());
+                bw.newLine();
+                bw.write(a.getPatientId());
+                bw.newLine();
+                bw.write(a.getDateTime());
+                bw.newLine();
+                bw.write(a.getNotes());
+                bw.newLine();
+                
+                
+            }
+            bw.close();
+            
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        
     }
 }

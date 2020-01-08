@@ -5,6 +5,9 @@
  */
 package Controller;
 
+import Model.Appointment;
+import Model.Util.Database;
+import View.AppointmentViewer;
 import java.awt.event.ActionEvent;
 
 /**
@@ -20,8 +23,22 @@ public class DoctorController extends UserController {
     }
 
     @Override
-    public void actionPerformed(ActionEvent arg0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("View Appointments")) {
+            
+            AppointmentViewer view = new AppointmentViewer();
+            
+            AppointmentViewerController controller = new AppointmentViewerController();
+            controller.setView(view);
+            for(Appointment a : Database.getDrsAppointments(user.getId())) {
+                System.out.println(a.getPatientId());
+            }
+            controller.setAppointments(Database.getDrsAppointments(user.getId()));
+            controller.init();
+            
+            view.addButtonHandlerStrategy(controller);
+            view.setVisible(true);
+        }
     }
     
 }
