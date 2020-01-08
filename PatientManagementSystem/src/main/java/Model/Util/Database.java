@@ -252,6 +252,15 @@ public class Database {
         
     }
     
+    public static void popTempPerson() {
+        TempPerson[] newArray = new TempPerson[allTempPeople.length-1];
+        for(int i=0; i < allTempPeople.length-1; i++) {
+            newArray[i] = allTempPeople[i+1];
+        }
+        allTempPeople = newArray;
+        writeTempPeopleToFile();
+    }
+    
     public static boolean doesIdAlreadyExist(String id) {
         Person[] people = GetAllUsers();
         
