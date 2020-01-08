@@ -413,6 +413,27 @@ public class Database {
             return null;
         }
         
+    }
+    
+    public static Appointment[] getPatientsAppointments(String id) {
+        Appointment[] appointmetns = GetAllAppointments();
+        
+        ArrayList<Appointment> matching = new ArrayList<>();
+        for(Appointment a : appointmetns) {
+           // System.out.println("p.getId() : " + p.getId());
+            
+            if(id.equals(a.getPatientId())) {
+                
+                matching.add(a);
+            }
+        }
+        //System.out.println("mathcing size: " + matching.size());
+        if(matching.size() > 0) {
+            
+            return matching.toArray(new Appointment[matching.size()]);
+        } else {
+            return null;
+        }
         
     }
     
@@ -499,10 +520,8 @@ public class Database {
         Medicine[] medicines = GetAllMedicine();
         
         for(Medicine m : medicines) {
-           // System.out.println("p.getId() : " + p.getId());
             
             if(name.equals(m.getName())) {
-                //System.out.println("Appointment Found");
                 return m;
             }
         }
@@ -521,13 +540,13 @@ public class Database {
         }
         all[allMedicine.length] = newMedicine;
         allMedicine = all;
-        writeAppointmentsToFile();
+        writeMedicinesToFile();
     }
     
     private static void writeMedicinesToFile() {
         GetAllMedicine();
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("medicine.txt"), false));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("medicines.txt"), false));
             bw.write(Integer.toString(allMedicine.length));
             bw.newLine();
             for(Medicine m : allMedicine) {
@@ -535,7 +554,7 @@ public class Database {
                 bw.newLine();
                 bw.write(m.getDescription());
                 bw.newLine();
-                bw.write(m.getQuantity());
+                bw.write(Integer.toString(m.getQuantity()));
                 bw.newLine();
                 
                 

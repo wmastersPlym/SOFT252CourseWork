@@ -6,8 +6,11 @@
 package Controller;
 
 import Model.Appointment;
+import Model.People.Doctor;
 import Model.Util.Database;
+import View.AddMedicineView;
 import View.AppointmentViewer;
+import View.CreateAppointment;
 import java.awt.event.ActionEvent;
 
 /**
@@ -40,8 +43,22 @@ public class DoctorController extends UserController {
             view.setVisible(true);
         } else if(e.getActionCommand().equals("Add new Medicine")) {
             
-        } else if(e.getActionCommand().equals("Make Appointments")){
+            AddMedicineView view = new AddMedicineView();
             
+            AddMedicineController controller = new AddMedicineController();
+            controller.setView(view);
+            
+            view.addButtonHandlerStrategy(controller);
+            view.setVisible(true);
+        } else if(e.getActionCommand().equals("Make Appointments")){
+            CreateAppointment view = new CreateAppointment();
+            
+            CreateAppointmentController controller = new CreateAppointmentController();
+            controller.setView(view);
+            controller.setDoctor((Doctor)user);
+            
+            view.addButtonHandlerStrategy(controller);
+            view.setVisible(true);
         }
     }
     
