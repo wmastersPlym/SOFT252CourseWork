@@ -1,5 +1,9 @@
 # SOFTCourseWork
  
-## Dependencies
-- [JSON-Simple](https://search.maven.org/artifact/com.googlecode.json-simple/json-simple)
-	- Used for json manipulation for the storage of data
+All types of use can be logged in using the id's:
+a1234
+p1234
+d1234
+s1234
+
+with the password: william
