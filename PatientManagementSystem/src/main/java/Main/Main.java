@@ -19,6 +19,8 @@ public class Main {
     
     public static void main(String[] args) {
         
+        System.out.println(Hash.hashPassword("password"));
+        
         
         
         Login view = new Login();
@@ -30,8 +32,7 @@ public class Main {
         view.setVisible(true);
         
 
-        //System.out.print(Hash.hashPassword("william"));
-        //Database.GetAllUsers();
+        
         
         
         
