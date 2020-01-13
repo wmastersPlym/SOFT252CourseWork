@@ -82,7 +82,9 @@ public class PersonTest {
 
     @Test
     public void testGetAddress() {
-        assertEquals(myPerson.getAddress(), new Address("houseNumberName", "streetName", "town", "postcode"));
+        //assertEquals(myPerson.getAddress(), new Address("houseNumberName", "streetName", "town", "postcode"));
+        
+        assertThat(myPerson.getAddress().is);
     }
 
     @Test
