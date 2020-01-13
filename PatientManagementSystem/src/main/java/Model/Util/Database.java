@@ -40,6 +40,9 @@ public class Database {
     private static Appointment[] allAppointments;
     private static Medicine[] allMedicine;
     
+    private static String peopleFile = "people.txt";
+    private static String tmpPeopleFile = "tempPeople.txt";
+    
     public static Person[] GetAllUsers() {
         if(allUsers == null) {
             allUsers = getAllPeopleFromFile();
@@ -51,7 +54,7 @@ public class Database {
         ArrayList<Person> myPeople = new ArrayList<Person>();
         
         try {
-          BufferedReader br = new BufferedReader(new FileReader(new File("people.txt")));  
+          BufferedReader br = new BufferedReader(new FileReader(new File(peopleFile)));  
           int numberOfPeople = Integer.parseInt(br.readLine());
           for(int i =0; i < numberOfPeople; i++) {
               String id = br.readLine();
@@ -125,7 +128,7 @@ public class Database {
     
     public static void addPerson(Person newPerson) {
         GetAllUsers();
-        System.out.println("Model.Util.Database.addPerson():" + newPerson.getId());
+        //System.out.println("Model.Util.Database.addPerson():" + newPerson.getId());
         //allTempPeople
         Person[] all = new Person[allUsers.length+1];
         for(int i=0; i < allUsers.length; i++) {
@@ -139,7 +142,7 @@ public class Database {
     private static void writePeopleToFile() {
         GetAllUsers();
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("people.txt"), false));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(peopleFile), false));
             bw.write(Integer.toString(allUsers.length));
             bw.newLine();
             for(Person p : allUsers) {
@@ -185,7 +188,7 @@ public class Database {
         ArrayList<TempPerson> myTempPeople = new ArrayList<TempPerson>();
         
         try {
-          BufferedReader br = new BufferedReader(new FileReader(new File("tempPeople.txt")));  
+          BufferedReader br = new BufferedReader(new FileReader(new File(tmpPeopleFile)));  
           int numberOfPeople = Integer.parseInt(br.readLine());
           for(int i =0; i < numberOfPeople; i++) {
               String passwordHash = br.readLine();
@@ -235,7 +238,7 @@ public class Database {
     private static void writeTempPeopleToFile() {
         getAllTempPeople();
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("tempPeople.txt"), false));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(tmpPeopleFile), false));
             bw.write(Integer.toString(allTempPeople.length));
             bw.newLine();
             for(TempPerson p : allTempPeople) {
@@ -565,5 +568,13 @@ public class Database {
             e.printStackTrace();
         }
         
+    }
+    
+    public static void setPeopleFile(String newFile) {
+        peopleFile = newFile;
+    }
+    
+    public static void setTempPeopleFile(String newFile) {
+        tmpPeopleFile = newFile;
     }
 }

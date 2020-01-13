@@ -84,14 +84,23 @@ public class PersonTest {
     public void testGetAddress() {
         //assertEquals(myPerson.getAddress(), new Address("houseNumberName", "streetName", "town", "postcode"));
         
-        assertThat(myPerson.getAddress().is);
+        //assertThat(myPerson.getAddress().is);
+        
+        assertEquals(myPerson.getAddress().getHouseNumberName(), "houseNumberName");
+        assertEquals(myPerson.getAddress().getStreetName(), "streetName");
+        assertEquals(myPerson.getAddress().getTown(), "town");
+        assertEquals(myPerson.getAddress().getPostcode(), "postcode");
     }
 
     @Test
     public void testSetAddress() {
         PersonImpl myPersonTest = new PersonImpl("id", "passwordHash", "firstName", "lastName", new Address("houseNumberName", "streetName", "town", "postcode"));
         myPersonTest.setAddress(new Address("new houseNumberName", "new streetName", "new town", "new postcode"));
-        assertEquals(myPersonTest.getAddress(), new Address("new houseNumberName", "new streetName", "new town", "new postcode"));
+        //assertEquals(myPersonTest.getAddress(), new Address("new houseNumberName", "new streetName", "new town", "new postcode"));
+        assertEquals(myPersonTest.getAddress().getHouseNumberName(), "new houseNumberName");
+        assertEquals(myPersonTest.getAddress().getStreetName(), "new streetName");
+        assertEquals(myPersonTest.getAddress().getTown(), "new town");
+        assertEquals(myPersonTest.getAddress().getPostcode(), "new postcode");
     }
 
     @Test
@@ -102,7 +111,7 @@ public class PersonTest {
 
     @Test
     public void testLogin() {
-        assertTrue(myPerson.login(Hash.hashPassword("password")));
+        assertTrue(myPerson.login("password"));
     }
 
     

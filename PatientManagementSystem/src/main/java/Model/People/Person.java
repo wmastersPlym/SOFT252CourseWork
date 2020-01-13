@@ -76,7 +76,7 @@ public abstract class Person {
     
     
     public boolean login(String inputPassword) {
-        if(passwordHash == Hash.hashPassword(inputPassword)) {
+        if(passwordHash.equals(Hash.hashPassword(inputPassword))) {
             return true;
         }
         return false;
