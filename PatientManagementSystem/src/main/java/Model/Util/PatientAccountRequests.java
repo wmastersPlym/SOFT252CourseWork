@@ -21,11 +21,11 @@ public class PatientAccountRequests {
         if(instance == null) {
             instance = new PatientAccountRequests();
         }
-        update();
+        instance.update();
         return instance;
     }
     
-    public static void update() {
+    public void update() {
         accountsToView = Database.getAllTempPeople();
     }
     
@@ -38,9 +38,13 @@ public class PatientAccountRequests {
         
     }
     
-    public static void addNewRequest(TempPerson person) {
+    public void addNewRequest(TempPerson person) {
         Database.addTempPerson(person);
-        update();
+        instance.update();
+    }
+    
+    public TempPerson[] getAllAccountsToReview() {
+        return accountsToView;
     }
     
 }
