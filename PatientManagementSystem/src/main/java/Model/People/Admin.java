@@ -6,6 +6,7 @@
 package Model.People;
 
 import Model.Address;
+import Model.Util.Database;
 
 /**
  *
@@ -19,14 +20,8 @@ public class Admin extends Person {
     }
     
     
-    
-    
-    public void createAdminAccount(Admin newAdmin) {
-        // TODO createAdminAccount write to file
-    }
-    
-    public void createDoctorAccount(/*TODO Add doctor type */) {
-        // TODO createDoctorAccount write to file
+    public void removeAccount(String id) {
+        Database.removePerson(id);
     }
     
 }

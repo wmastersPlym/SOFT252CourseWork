@@ -266,6 +266,8 @@ public class UserPanel extends javax.swing.JFrame {
     public void buildAdminControls() {
         javax.swing.JButton addDoctorSecretary = new javax.swing.JButton("Add Doctor/Secretary");
         pnlControls.add(addDoctorSecretary);
+        javax.swing.JButton removeAccount = new javax.swing.JButton("Remove Account");
+        pnlControls.add(removeAccount);
     }
     
     public void buildSecretaryControls() {

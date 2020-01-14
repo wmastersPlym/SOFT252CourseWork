@@ -5,7 +5,9 @@
  */
 package Controller;
 
+import Model.People.Admin;
 import View.CreateAccount;
+import View.FindUserById;
 import java.awt.event.ActionEvent;
 
 /**
@@ -33,11 +35,22 @@ public class AdminController extends UserController {
             createAccount.addButtonHandlerStrategy(controller);
             
             createAccount.setVisible(true);
+        } else if (e.getActionCommand().equals("Remove Account")) {
+            FindUserById view = new FindUserById();
+            view.setController(this);
+            
+            view.setVisible(true);
+            
+            
         } else if(e.getActionCommand().equals("Create Account")) {
             System.out.println("Create a account");
             
         }
         
+    }
+    
+    public void removePerson(String id) {
+        ((Admin) user).removeAccount(id);
     }
     
 }

@@ -44,6 +44,7 @@ public class Database {
     private static String tmpPeopleFile = "tempPeople.txt";
     
     public static Person[] GetAllUsers() {
+        // if there are no users it will get them all from the file
         if(allUsers == null) {
             allUsers = getAllPeopleFromFile();
         }
@@ -55,8 +56,12 @@ public class Database {
         
         try {
           BufferedReader br = new BufferedReader(new FileReader(new File(peopleFile)));  
+          
+          // Reads how many people will be in the file
           int numberOfPeople = Integer.parseInt(br.readLine());
           for(int i =0; i < numberOfPeople; i++) {
+              
+              // Reads each attribute for the person
               String id = br.readLine();
               String passwordHash = br.readLine();
               String firstName = br.readLine();
@@ -67,7 +72,7 @@ public class Database {
               String postcode = br.readLine();
               
               
-              
+              // Depending on their id the correct Type of person is created
               switch(id.charAt(0)){
                   case 'a': 
                       Admin newAdmin = new Admin(id, passwordHash, firstName, lastName, new Address(houseNumberName, streetName, town, postcode));
@@ -78,6 +83,7 @@ public class Database {
                       myPeople.add(newDoctor);
                       break;
                   case 'p':
+                      // Patient has more data so rest of attributes are read from the file
                       String sex = br.readLine();
                       int age = Integer.parseInt(br.readLine());
                       Patient newPatient = new Patient(id, passwordHash, firstName, lastName, new Address(houseNumberName, streetName, town, postcode), sex, age);
@@ -89,13 +95,12 @@ public class Database {
                       break;
               }
               
-              //System.out.println(id.charAt(0));
           }
-          for(Person p : myPeople) {
-              System.out.println(p.toString());
-          }
+          
+          // Converts arraylist back to array
           Person[] peopleToReturn = myPeople.toArray(new Person[myPeople.size()]);
-          //peopleToReturn = (Person) myPeople.toArray();
+          
+          // closes the file
           br.close();
           return peopleToReturn;
           
@@ -106,17 +111,18 @@ public class Database {
         }
         
                 
-        
+        // There was an error openeing the file so null will be returned
         return null;
     }
     
     public static Person getPerson(String id) {
+        // fills temporary array with all the users
         Person[] people = GetAllUsers();
-        //System.out.println("Controller.Database.getPerson(), id: " + id);
         
+        // Loops through each person
         for(Person p : people) {
-           // System.out.println("p.getId() : " + p.getId());
             
+            // compares the id 
             if(id.equals(p.getId())) {
                 System.out.println("Match");
                 return p;
@@ -128,24 +134,31 @@ public class Database {
     
     public static void addPerson(Person newPerson) {
         GetAllUsers();
-        //System.out.println("Model.Util.Database.addPerson():" + newPerson.getId());
-        //allTempPeople
+        
+        // makes empty array one bigger that the array containing all the users
         Person[] all = new Person[allUsers.length+1];
         for(int i=0; i < allUsers.length; i++) {
+            // loops through and adds each user to the new array
             all[i] = allUsers[i];
         }
+        // adds the new user to the end of the array
         all[allUsers.length] = newPerson;
         allUsers = all;
+        
+        //writes the new array to the file
         writePeopleToFile();
     }
     
     private static void writePeopleToFile() {
+        // makes sure the array isnt empty
         GetAllUsers();
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(new File(peopleFile), false));
+            // Writes how many people are in the array
             bw.write(Integer.toString(allUsers.length));
             bw.newLine();
             for(Person p : allUsers) {
+                // Writes all the attributes for each person
                 bw.write(p.getId());
                 bw.newLine();
                 bw.write(p.getPasswordHash());
@@ -163,6 +176,7 @@ public class Database {
                 bw.write(p.getAddress().getPostcode());
                 bw.newLine();
                 if(p instanceof Patient) {
+                    // Writes the extra attributes for the patients
                     bw.write(((Patient) p).getSex());
                     bw.newLine();
                     bw.write( Integer.toString(((Patient) p).getAge()) );
@@ -175,6 +189,28 @@ public class Database {
             e.printStackTrace();
         }
         
+    }
+    
+    public static void removePerson(String id) {
+        // Make sure array of all people is up to date
+        GetAllUsers();
+        
+        
+        ArrayList<Person> restOfPeople = new ArrayList<Person>();
+        
+        // adds every person to the array list unless that have the same id as what is passed to the function
+        for(Person p : GetAllUsers()) {
+            if(!(p.getId().equals(id))) {
+                restOfPeople.add(p);
+            }
+        }
+        
+        // converts the arraylist back to an array
+        Person[] allUsersArray = restOfPeople.toArray(new Person[restOfPeople.size()]);
+        
+        allUsers = allUsersArray;
+        
+        writePeopleToFile();
     }
     
     
