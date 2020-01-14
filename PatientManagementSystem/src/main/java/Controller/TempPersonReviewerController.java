@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Address;
 import Model.People.Patient;
 import Model.People.TempPerson;
 import Model.Util.Database;
@@ -27,7 +28,7 @@ public class TempPersonReviewerController implements ActionListener{
             
             // Add new person
             String newId = Database.generatePatientId();
-            Database.addPerson(new Patient(newId, person.getPasswordHash(), person.getFirstName(), person.getLastName(), person.getAddress(), person.getSex(), person.getAge()));
+            Database.addPerson(new Patient(newId, person.getPasswordHash(), view.getFirstName(), view.getLastName(), new Address(view.getHouseNo(), view.getStreet(), view.getTown(), view.getPostcode()), view.getSex(), view.getAge()));
             Database.popTempPerson();
             view.displayMessage("Id for " + person.getFirstName() + ": " + newId, "new Id + " + newId);
             view.dispose();

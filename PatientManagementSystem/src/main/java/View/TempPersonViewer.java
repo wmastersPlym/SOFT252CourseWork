@@ -46,6 +46,10 @@ public class TempPersonViewer extends javax.swing.JFrame {
         lblAccountReview = new javax.swing.JLabel();
         btnApprove = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        lblSex = new javax.swing.JLabel();
+        txtSex = new javax.swing.JTextField();
+        lblAge = new javax.swing.JLabel();
+        txtAge = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +84,14 @@ public class TempPersonViewer extends javax.swing.JFrame {
 
         btnDelete.setText("Delete");
 
+        lblSex.setText("Sex");
+
+        txtSex.setText("jTextField1");
+
+        lblAge.setText("Age");
+
+        txtAge.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,13 +125,17 @@ public class TempPersonViewer extends javax.swing.JFrame {
                                     .addComponent(txtHouseNo)
                                     .addComponent(txtStreetName)
                                     .addComponent(txtTown)
-                                    .addComponent(txtPostCode))))))
+                                    .addComponent(txtPostCode)
+                                    .addComponent(txtSex)
+                                    .addComponent(txtAge)))))
+                    .addComponent(lblSex)
+                    .addComponent(lblAge))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(lblAccountReview)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -145,7 +161,15 @@ public class TempPersonViewer extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPostCode)
                     .addComponent(txtPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSex)
+                    .addComponent(txtSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAge)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -197,7 +221,11 @@ public class TempPersonViewer extends javax.swing.JFrame {
        txtStreetName.setText(person.getAddress().getStreetName());
        txtTown.setText(person.getAddress().getTown());
        txtPostCode.setText(person.getAddress().getPostcode());
+       txtSex.setText(person.getSex());
+       txtAge.setText(Integer.toString(person.getAge()));
     }
+    
+    
     
     public void addButtonHandlerStrategy(ActionListener strategy){
         btnApprove.addActionListener(strategy);
@@ -207,21 +235,50 @@ public class TempPersonViewer extends javax.swing.JFrame {
     public void displayMessage(String msg, String msgTitle) {
         JOptionPane.showMessageDialog(null, msg, msgTitle, JOptionPane.INFORMATION_MESSAGE);
     }
+    
+    public String getFirstName() {
+        return txtFirstname.getText();
+    }
+    public String getLastName() {
+        return txtLastname.getText();
+    }
+    public String getHouseNo() {
+        return txtHouseNo.getText();
+    }
+    public String getStreet() {
+        return txtStreetName.getText();
+    }
+    public String getTown() {
+        return txtTown.getText();
+    }
+    public String getPostcode() {
+        return txtPostCode.getText();
+    }
+    public String getSex() {
+        return txtSex.getText();
+    }
+    public int getAge() {
+        return Integer.parseInt(txtAge.getText());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel lblAccountReview;
+    private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblHouseNo;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblPostCode;
+    private javax.swing.JLabel lblSex;
     private javax.swing.JLabel lblStreetName;
     private javax.swing.JLabel lblTown;
+    private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtFirstname;
     private javax.swing.JTextField txtHouseNo;
     private javax.swing.JTextField txtLastname;
     private javax.swing.JTextField txtPostCode;
+    private javax.swing.JTextField txtSex;
     private javax.swing.JTextField txtStreetName;
     private javax.swing.JTextField txtTown;
     // End of variables declaration//GEN-END:variables

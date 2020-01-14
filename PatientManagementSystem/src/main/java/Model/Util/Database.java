@@ -164,7 +164,9 @@ public class Database {
                 bw.newLine();
                 if(p instanceof Patient) {
                     bw.write(((Patient) p).getSex());
-                    bw.write(((Patient) p).getAge());
+                    bw.newLine();
+                    bw.write( Integer.toString(((Patient) p).getAge()) );
+                    bw.newLine();
                 }
             }
             bw.close();
