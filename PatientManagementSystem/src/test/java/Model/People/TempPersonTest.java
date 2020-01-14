@@ -99,7 +99,7 @@ public class TempPersonTest {
     @Test
     public void testSetAge() {
         myTemp.setAge(1);
-        assertEquals(myTemp.getSex(), 1);
+        assertEquals(myTemp.getAge(), 1);
     }
     
 }
